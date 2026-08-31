@@ -43,6 +43,7 @@ function createGame() {
       dir: 'up',
       speed: GHOST_SPEED,
       kind: g.kind,
+      exitDir: g.exitDir,
       releasedAt: [ 0, 2000, 5000, 8000 ][ i ],
       out: false,
     } ) ),
