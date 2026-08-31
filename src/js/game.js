@@ -184,16 +184,16 @@ function moveGhost( game, g ) {
     g.x = Math.round( g.x );
     g.y = Math.round( g.y );
 
-    if ( !g.out && game.frameElapsed >= g.releasedAt ) {
-      g.out = true;
-      const start = GHOST_STARTS.find( ( s ) => s.kind === g.kind );
-      g.x = start.x;
-      g.y = 11;
-      g.dir = 'up';
-    }
-
     if ( !g.out ) {
-      decideGhost( game, g );
+      if ( game.frameElapsed >= g.releasedAt ) {
+        g.out = true;
+        const start = GHOST_STARTS.find( ( s ) => s.kind === g.kind );
+        g.x = start.x;
+        g.y = 11;
+        g.dir = g.exitDir;
+      } else {
+        decideGhost( game, g );
+      }
     } else {
       decideGhost( game, g );
     }
